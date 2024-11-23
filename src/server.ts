@@ -1,5 +1,6 @@
 import app from "./app";
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+require("dotenv").config();
 
 async function main() {
   try {
@@ -11,3 +12,4 @@ async function main() {
     console.log(err);
   }
 }
+main();
