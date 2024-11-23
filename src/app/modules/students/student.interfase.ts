@@ -24,10 +24,10 @@ export type Student = {
   gender: "male" | "female";
   email: string;
   contactNo: string;
-  emergencyContactNo: string;
+  emergencyContactNo?: string;
   bloodGroup?: "A+" | "A-" | "B+" | "AB+" | "O+";
-  presentAddress: string;
-  permanentAddress: string;
   guardian: Guardian;
-  localGuardian: LocalGuardian;
+//   presentAddress: string;
+//   permanentAddress: string;
+//   localGuardian: LocalGuardian;
 };
