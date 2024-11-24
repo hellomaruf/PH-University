@@ -1,7 +1,6 @@
 {
   "name": "frist-project",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -19,7 +18,9 @@
     "typescript": "^5.6.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.1"
-  }
+  },
+  "description": ""
 }

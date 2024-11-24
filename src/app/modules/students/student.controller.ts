@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { studentServices } from "./student.service";
 const createStudent = async (req: Request, res: Response) => {
   try {
-    const student = req.body;
+    const studentData = req.body;
+    console.log(studentData);
 
     // will call service function to send this data------------->
-    const result = await studentServices.createStudentIntoDB(student);
+    const result = await studentServices.createStudentIntoDB(studentData);
 
     // send response ------------>
     res.status(400).json({

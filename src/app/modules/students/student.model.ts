@@ -31,7 +31,7 @@ const studentSchema = new Schema<Student>({
   gender: ["male", "female"],
   email: { type: String, required: true },
   contactNo: { type: String, required: true },
-  emergencyContactNo: { type: String },
+  emergencyContactNo: { type: String, required: true },
   bloodGroup: ["A+", "A-", "AB+", "B+", "O+"],
   guardian: studentGuardian,
 });
