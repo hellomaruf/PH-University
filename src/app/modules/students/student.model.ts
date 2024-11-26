@@ -28,11 +28,19 @@ const studentGuardian = new Schema<Guardian>({
 const studentSchema = new Schema<Student>({
   id: String,
   name: studentName,
-  gender: ["male", "female"],
+  gender: {
+    type: String,
+    enum: ["male", "female"],
+    required: true,
+  },
   email: { type: String, required: true },
   contactNo: { type: String, required: true },
   emergencyContactNo: { type: String, required: true },
-  bloodGroup: ["A+", "A-", "AB+", "B+", "O+"],
+  bloodGroup: {
+    type: String,
+    enum: ["A+", "A-", "AB+", "B+", "O+"],
+    required: true,
+  },
   guardian: studentGuardian,
 });
 

@@ -28,6 +28,20 @@ const createStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         console.log(err);
     }
 });
+const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield student_service_1.studentServices.getAllStudentFromDB();
+        res.status(200).json({
+            success: true,
+            message: "All student find successfully",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.studentController = {
     createStudent,
+    getAllStudents,
 };

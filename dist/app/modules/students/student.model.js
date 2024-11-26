@@ -27,11 +27,19 @@ const studentGuardian = new mongoose_1.Schema({
 const studentSchema = new mongoose_1.Schema({
     id: String,
     name: studentName,
-    gender: ["male", "female"],
-    email: { type: String },
-    contactNo: { type: String },
-    emergencyContactNo: { type: String },
-    bloodGroup: ["A+", "A-", "AB+", "B+", "O+"],
+    gender: {
+        type: String,
+        enum: ["male", "female"],
+        required: true,
+    },
+    email: { type: String, required: true },
+    contactNo: { type: String, required: true },
+    emergencyContactNo: { type: String, required: true },
+    bloodGroup: {
+        type: String,
+        enum: ["A+", "A-", "AB+", "B+", "O+"],
+        required: true,
+    },
     guardian: studentGuardian,
 });
 // create model--------------->
