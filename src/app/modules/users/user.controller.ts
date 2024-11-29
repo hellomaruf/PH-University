@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { usersServices } from "./user.service";
 
-const createStudent = async (req: Request, res: Response) => {
+const createStudent = async (req: Request, res: Response, next:NextFunction) => {
   try {
     const studentData = req.body;
     console.log(studentData);
@@ -19,7 +19,7 @@ const createStudent = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 };
 

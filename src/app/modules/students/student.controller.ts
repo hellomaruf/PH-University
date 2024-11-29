@@ -1,6 +1,10 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { studentServices } from "./student.service";
-const createStudent = async (req: Request, res: Response) => {
+const createStudent = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const studentData = req.body;
     console.log(studentData);
@@ -15,11 +19,15 @@ const createStudent = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 };
 
-const getAllStudents = async (req: Request, res: Response) => {
+const getAllStudents = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const result = await studentServices.getAllStudentFromDB();
     res.status(200).json({
@@ -28,7 +36,7 @@ const getAllStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 };
 

@@ -20,12 +20,12 @@ const userSchema = new Schema<TUser>({
     enum: ["admin", "student", "faculty"],
   },
   status: {
-    required: true,
+    // required: true,
     type: String,
     enum: ["in-progress", "blocked"],
   },
   isDelete: {
-    required: true,
+    // required: true,
     type: Boolean,
   },
 });
