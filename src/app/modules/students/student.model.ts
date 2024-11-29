@@ -28,6 +28,12 @@ const studentGuardian = new Schema<Guardian>({
 const studentSchema = new Schema<Student>({
   id: String,
   name: studentName,
+  user: {
+    type: Schema.Types.ObjectId,
+    required: [true, "user id is required"],
+    unique: true,
+    ref: "User",
+  },
   gender: {
     type: String,
     enum: ["male", "female"],

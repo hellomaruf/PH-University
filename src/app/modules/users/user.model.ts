@@ -21,7 +21,6 @@ const userSchema = new Schema<TUser>({
   },
   status: {
     required: true,
-
     type: String,
     enum: ["in-progress", "blocked"],
   },

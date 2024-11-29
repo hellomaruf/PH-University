@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { StudentRoutes } from "./app/modules/students/student.router";
 import cors from "cors";
+import { UsersRouters } from "./app/modules/users/user.router";
 const app = express();
 
 // perser -------------->
@@ -9,6 +10,8 @@ app.use(cors());
 
 // application routes---------------->
 app.use("/api/v1/students", StudentRoutes);
+app.use("/api/v1/users", UsersRouters);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello developer!");
 });

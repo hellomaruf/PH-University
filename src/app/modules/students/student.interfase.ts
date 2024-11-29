@@ -1,4 +1,4 @@
-import { Schema, model, connect } from "mongoose";
+import { Schema, model, connect, Types } from "mongoose";
 
 export type UserName = {
   firstName: string;
@@ -21,6 +21,7 @@ export type LocalGuardian = {
 export type Student = {
   id: string;
   name: UserName;
+  user:Types.ObjectId
   gender: "male" | "female";
   email: string;
   contactNo: string;

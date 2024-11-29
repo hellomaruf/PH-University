@@ -27,6 +27,12 @@ const studentGuardian = new mongoose_1.Schema({
 const studentSchema = new mongoose_1.Schema({
     id: String,
     name: studentName,
+    user: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: [true, "user id is required"],
+        unique: true,
+        ref: "User",
+    },
     gender: {
         type: String,
         enum: ["male", "female"],
