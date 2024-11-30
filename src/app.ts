@@ -2,7 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import { StudentRoutes } from "./app/modules/students/student.router";
 import cors from "cors";
 import { UsersRouters } from "./app/modules/users/user.router";
-import globalErrorHandler  from "./app/middlewares/globalErrorHundler";
+import globalErrorHandler from "./app/middlewares/globalErrorHundler";
 const app = express();
 
 // perser -------------->
