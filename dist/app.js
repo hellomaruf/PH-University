@@ -16,4 +16,14 @@ app.use("/api/v1/users", user_router_1.UsersRouters);
 app.get("/", (req, res) => {
     res.send("Hello developer!");
 });
+// Global error handle-------->
+app.use((err, req, res, next) => {
+    let statusCode = 500;
+    let message = err.message || "Something Went Wrong!!";
+    return res.status(statusCode).json({
+        success: false,
+        message,
+        error: err,
+    });
+});
 exports.default = app;

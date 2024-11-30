@@ -1,7 +1,8 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { StudentRoutes } from "./app/modules/students/student.router";
 import cors from "cors";
 import { UsersRouters } from "./app/modules/users/user.router";
+import globalErrorHandler  from "./app/middlewares/globalErrorHundler";
 const app = express();
 
 // perser -------------->
@@ -15,5 +16,8 @@ app.use("/api/v1/users", UsersRouters);
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello developer!");
 });
+
+// Global error handle-------->
+app.use(globalErrorHandler);
 
 export default app;
