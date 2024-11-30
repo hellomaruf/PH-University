@@ -11,23 +11,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usersController = void 0;
 const user_service_1 = require("./user.service");
-const createStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const studentData = req.body;
-        console.log(studentData);
-        // will call service function to send this data------------->
-        const result = yield user_service_1.usersServices.createStudentIntoDB(studentData);
-        // send response ------------>
-        res.status(400).json({
-            success: true,
-            massage: "Student is create successfully",
-            data: result,
+const catchAsync = (fn) => {
+    return (req, res, next) => {
+        Promise.resolve(fn(req, res, next)).catch((err) => {
+            next(err);
         });
-    }
-    catch (err) {
-        next(err);
-    }
-});
+    };
+};
+const createStudent = catchAsync((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const studentData = req.body;
+    console.log(studentData);
+    // will call service function to send this data------------->
+    const result = yield user_service_1.usersServices.createStudentIntoDB(studentData);
+    // send response ------------>
+    res.status(400).json({
+        success: true,
+        massage: "Student is create successfully",
+        data: result,
+    });
+}));
 // const getAllStudents = async (req: Request, res: Response) => {
 //   try {
 //     const result = await studentServices.getAllStudentFromDB();

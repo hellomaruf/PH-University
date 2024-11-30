@@ -11,36 +11,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.studentController = void 0;
 const student_service_1 = require("./student.service");
-const createStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const studentData = req.body;
-        console.log(studentData);
-        // will call service function to send this data------------->
-        const result = yield student_service_1.studentServices.createStudentIntoDB(studentData);
-        // send response ------------>
-        res.status(400).json({
-            success: true,
-            massage: "Student is create successfully",
-            data: result,
+const catchAsync = (fn) => {
+    return (req, res, next) => {
+        Promise.resolve(fn(req, res, next)).catch((err) => {
+            next(err);
         });
-    }
-    catch (err) {
-        next(err);
-    }
-});
-const getAllStudents = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const result = yield student_service_1.studentServices.getAllStudentFromDB();
-        res.status(200).json({
-            success: true,
-            message: "All student find successfully",
-            data: result,
-        });
-    }
-    catch (err) {
-        next(err);
-    }
-});
+    };
+};
+const createStudent = catchAsync((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const studentData = req.body;
+    console.log(studentData);
+    // will call service function to send this data------------->
+    const result = yield student_service_1.studentServices.createStudentIntoDB(studentData);
+    // send response ------------>
+    res.status(400).json({
+        success: true,
+        massage: "Student is create successfully",
+        data: result,
+    });
+}));
+const getAllStudents = catchAsync((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield student_service_1.studentServices.getAllStudentFromDB();
+    res.status(200).json({
+        success: true,
+        message: "All student find successfully",
+        data: result,
+    });
+}));
 exports.studentController = {
     createStudent,
     getAllStudents,
