@@ -1,4 +1,5 @@
-type Month =
+
+type TMonth =
   | "January"
   | "February"
   | "March"
@@ -16,6 +17,6 @@ export type TAcademicSemester = {
   name: "Aumumn" | "Summar" | "Fall";
   code: "01" | "02" | "03";
   year: Date;
-  startMonth: Month;
-  endMonth: Month;
+  startMonth: TMonth;
+  endMonth: TMonth;
 };
