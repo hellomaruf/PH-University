@@ -16,17 +16,17 @@ import { NextFunction, Request, Response } from "express";
 //   });
 // };
 
-
 const globalErrorHandler = (
-    err: any,
-    req: Request,
-    res: Response,
-    next: NextFunction
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-    // Handle the error
-    console.error(err);
-     res.status(err.status || 500).json({
-        message: err.message || "Internal Server Error",
-    });
+  // Handle the error
+  console.error(err);
+  res.status(err.status || 500).json({
+    message: err.message || "Internal Server Error",
+    error: err,
+  });
 };
 export default globalErrorHandler;

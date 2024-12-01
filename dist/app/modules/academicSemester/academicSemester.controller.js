@@ -9,33 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.usersController = void 0;
-const user_service_1 = require("./user.service");
+exports.academicSemesterController = void 0;
 const catchAsync_1 = require("../../utils/catchAsync");
-const createStudent = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const studentData = req.body;
-    console.log(studentData);
+const academicSemester_service_1 = require("./academicSemester.service");
+const createAcademicSemester = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const academicSemesterData = req.body;
     // will call service function to send this data------------->
-    const result = yield user_service_1.usersServices.createStudentIntoDB(studentData);
+    const result = yield academicSemester_service_1.AcademicSemesterServices.createAcademicSemesterIntoDB(academicSemesterData);
     // send response ------------>
     res.status(400).json({
         success: true,
-        massage: "Student is create successfully",
+        massage: "Acamemic semester is create successfully",
         data: result,
     });
 }));
-// const getAllStudents = async (req: Request, res: Response) => {
-//   try {
-//     const result = await studentServices.getAllStudentFromDB();
-//     res.status(200).json({
-//       success: true,
-//       message: "All student find successfully",
-//       data: result,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-exports.usersController = {
-    createStudent,
+exports.academicSemesterController = {
+    createAcademicSemester,
 };

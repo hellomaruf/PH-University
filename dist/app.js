@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const user_router_1 = require("./app/modules/users/user.router");
 const globalErrorHundler_1 = __importDefault(require("./app/middlewares/globalErrorHundler"));
+const academicSemester_route_1 = require("./app/modules/academicSemester/academicSemester.route");
 const app = (0, express_1.default)();
 // perser -------------->
 app.use(express_1.default.json());
@@ -14,6 +15,7 @@ app.use((0, cors_1.default)());
 // application routes---------------->
 // app.use("/api/v1/students", StudentRoutes);
 app.use("/api/v1/users", user_router_1.UsersRouters);
+app.use("/api/v1/academy-semester", academicSemester_route_1.createAcademicSemesterRoutes);
 app.get("/", (req, res) => {
     res.send("Hello developer!");
 });

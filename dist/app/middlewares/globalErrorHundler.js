@@ -19,6 +19,7 @@ const globalErrorHandler = (err, req, res, next) => {
     console.error(err);
     res.status(err.status || 500).json({
         message: err.message || "Internal Server Error",
+        error: err,
     });
 };
 exports.default = globalErrorHandler;
