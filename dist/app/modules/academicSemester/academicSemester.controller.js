@@ -14,6 +14,7 @@ const catchAsync_1 = require("../../utils/catchAsync");
 const academicSemester_service_1 = require("./academicSemester.service");
 const createAcademicSemester = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const academicSemesterData = req.body;
+    console.log(academicSemesterData);
     // will call service function to send this data------------->
     const result = yield academicSemester_service_1.AcademicSemesterServices.createAcademicSemesterIntoDB(academicSemesterData);
     // send response ------------>

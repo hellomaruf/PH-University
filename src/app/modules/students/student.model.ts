@@ -48,6 +48,10 @@ const studentSchema = new Schema<Student>({
     required: true,
   },
   guardian: studentGuardian,
+  admissionSemester: {
+    type: Schema.Types.ObjectId,
+    ref:'AcademicSemester'
+  },
 });
 
 // create model--------------->

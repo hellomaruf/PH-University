@@ -1,3 +1,4 @@
+import { TAcademicSemester } from "../academicSemester/academicSemester.interface";
 import { Student } from "../students/student.interfase";
 import { studentModel } from "../students/student.model";
 import { TUser } from "./user.interface";
@@ -10,8 +11,13 @@ const createStudentIntoDB = async (studentData: Student) => {
   userData.password = process.env.DEFAULT_PASS as string;
   userData.role = "student";
 
+  // generate student id ----------->
+  const generateStudentId = (payload: TAcademicSemester) => {
+    
+  };
+
   // manually set generated id ----->
-  userData.id = "2030100001";
+  userData.id = generateStudentId();
   const newUser = await UserModel.create(userData);
 
   // create student ------>

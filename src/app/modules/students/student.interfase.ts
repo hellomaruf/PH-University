@@ -28,6 +28,7 @@ export type Student = {
   emergencyContactNo?: string;
   bloodGroup?: "A+" | "A-" | "B+" | "AB+" | "O+";
   guardian: Guardian;
+  admissionSemester:Types.ObjectId
 //   presentAddress: string;
 //   permanentAddress: string;
 //   localGuardian: LocalGuardian;

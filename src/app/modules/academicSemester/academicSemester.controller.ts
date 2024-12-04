@@ -1,10 +1,9 @@
-import {  RequestHandler } from "express";
+import { RequestHandler } from "express";
 import { catchAsync } from "../../utils/catchAsync";
 import { AcademicSemesterServices } from "./academicSemester.service";
 
 const createAcademicSemester: RequestHandler = catchAsync(
-    async (req, res, next) => {
-        
+  async (req, res, next) => {
     const academicSemesterData = req.body;
 
     // will call service function to send this data------------->
@@ -21,6 +20,19 @@ const createAcademicSemester: RequestHandler = catchAsync(
   }
 );
 
+const getAllAcademicSemester: RequestHandler = catchAsync(
+  async (req, res, next) => {
+    const result = await AcademicSemesterServices.getAllAcademicSemester();
+
+    res.status(400).json({
+      success: true,
+      massage: "Get all Semester Successfully",
+      data: result,
+    });
+  }
+);
+
 export const academicSemesterController = {
   createAcademicSemester,
+  getAllAcademicSemester
 };
