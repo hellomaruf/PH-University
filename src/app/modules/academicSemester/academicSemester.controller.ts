@@ -11,7 +11,7 @@ const createAcademicSemester: RequestHandler = catchAsync(
       academicSemesterData
     );
 
-    // send response ------------>
+    // send response ------------> 
     res.status(400).json({
       success: true,
       massage: "Acamemic semester is create successfully",
