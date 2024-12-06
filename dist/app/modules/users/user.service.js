@@ -17,8 +17,11 @@ const createStudentIntoDB = (studentData) => __awaiter(void 0, void 0, void 0, f
     // if password is not given , set default password--------->
     userData.password = process.env.DEFAULT_PASS;
     userData.role = "student";
+    // generate student id ----------->
+    const generateStudentId = (payload) => {
+    };
     // manually set generated id ----->
-    userData.id = "2030100001";
+    userData.id = generateStudentId();
     const newUser = yield user_model_1.UserModel.create(userData);
     // create student ------>
     if (Object.keys(newUser).length) {

@@ -47,6 +47,10 @@ const studentSchema = new mongoose_1.Schema({
         required: true,
     },
     guardian: studentGuardian,
+    admissionSemester: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'AcademicSemester'
+    },
 });
 // create model--------------->
 exports.studentModel = (0, mongoose_1.model)("student", studentSchema);

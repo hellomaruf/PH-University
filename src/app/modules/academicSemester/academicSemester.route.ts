@@ -18,4 +18,9 @@ router.get(
   academicSemesterController.getAllAcademicSemester
 );
 
+router.get(
+  "/get-single-semester/:id",
+  academicSemesterController.getASingleAcademicSemester
+);
+
 export const createAcademicSemesterRoutes = router;

@@ -11,10 +11,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcademicSemesterServices = void 0;
 const academicSemester_model_1 = require("./academicSemester.model");
+const mongodb_1 = require("mongodb");
 const createAcademicSemesterIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = academicSemester_model_1.AcademicSemester.create(payload);
     return result;
 });
+const getAllAcademicSemester = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicSemester_model_1.AcademicSemester.find({});
+    return result;
+});
+const getSingleAcademicSemester = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicSemester_model_1.AcademicSemester.findOne({ _id: new mongodb_1.ObjectId(id) });
+    return result;
+});
 exports.AcademicSemesterServices = {
     createAcademicSemesterIntoDB,
+    getAllAcademicSemester,
+    getSingleAcademicSemester,
 };
