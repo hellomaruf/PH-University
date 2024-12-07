@@ -4,6 +4,7 @@ import cors from "cors";
 import { UsersRouters } from "./app/modules/users/user.router";
 import globalErrorHandler from "./app/middlewares/globalErrorHundler";
 import { createAcademicSemesterRoutes } from "./app/modules/academicSemester/academicSemester.route";
+import { AcademicFacultyRouter } from "./app/modules/academicFaculty/academicFaculty.router";
 const app = express();
 
 // perser -------------->
@@ -14,6 +15,7 @@ app.use(cors());
 app.use("/api/v1/students", StudentRoutes);
 app.use("/api/v1/users", UsersRouters);
 app.use("/api/v1/academy-semester", createAcademicSemesterRoutes);
+app.use("/api/v1/academy-faculty", AcademicFacultyRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello developer!");

@@ -2,8 +2,8 @@ import { TAcademicFaculty } from "./academicFaculty.interface";
 import { AcademicFacultyModel } from "./academicFaculty.model";
 import { ObjectId } from "mongodb";
 
-const createFaculty = (payload: TAcademicFaculty) => {
-  const result = AcademicFacultyModel.create(payload);
+const createFaculty = async (payload: TAcademicFaculty) => {
+  const result = await AcademicFacultyModel.create(payload);
   return result;
 };
 

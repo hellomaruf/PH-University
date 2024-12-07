@@ -6,19 +6,17 @@ import { AcademicFacultyValidation } from "./academicFaculty.validation";
 const router = express.Router();
 
 router.post(
-  "create-academic-faculty",
+  "/create-academic-faculty",
   validateRequest(AcademicFacultyValidation.academicFacultyValidationSchema),
   AcademicFacultyController.createAcademicFaculty
 );
 router.get(
-  "get-all-academic-faculty",
-  validateRequest(AcademicFacultyValidation.academicFacultyValidationSchema),
+  "/get-all-academic-faculty",
   AcademicFacultyController.getAllAcademicFaculty
 );
 router.get(
-  "get-single-academic-faculty",
-  validateRequest(AcademicFacultyValidation.academicFacultyValidationSchema),
+  "/:id",
   AcademicFacultyController.getSingleAcademicFaculty
 );
 
-export const AcademicSemesterRouter = router;
+export const AcademicFacultyRouter = router;

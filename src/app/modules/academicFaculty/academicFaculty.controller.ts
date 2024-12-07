@@ -5,7 +5,7 @@ import { AcademicFacultyService } from "./academicFaculty.service";
 const createAcademicFaculty: RequestHandler = catchAsync(
   async (req, res, next) => {
     const academicFacultyData = req.body;
-    const result = AcademicFacultyService.createFaculty(academicFacultyData);
+    const result = await AcademicFacultyService.createFaculty(academicFacultyData);
 
     res.json({
       success: true,
@@ -17,7 +17,7 @@ const createAcademicFaculty: RequestHandler = catchAsync(
 
 const getAllAcademicFaculty: RequestHandler = catchAsync(
   async (req, res, next) => {
-    const result = AcademicFacultyService.getAllAcademicFaculty();
+    const result = await AcademicFacultyService.getAllAcademicFaculty();
 
     res.json({
       success: true,
@@ -30,7 +30,7 @@ const getAllAcademicFaculty: RequestHandler = catchAsync(
 const getSingleAcademicFaculty: RequestHandler = catchAsync(
   async (req, res, next) => {
     const { id } = req.params;
-    const result = AcademicFacultyService.getSingleAcademicFaculty(id);
+    const result = await AcademicFacultyService.getSingleAcademicFaculty(id);
 
     res.json({
       success: true,
