@@ -38,7 +38,7 @@ const getSingleAcademicDepartment: RequestHandler = catchAsync(
 
     res.json({
       success: true,
-      message: "Get All Department successfully!",
+      message: "Get Single Department successfully!",
       data: result,
     });
   }

@@ -7,9 +7,10 @@ const academicDepartmentSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     academicFaculty: {
-      type: Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "AcademicFaculty",
       required: true,
     },
