@@ -7,7 +7,7 @@ const createStudentIntoDB = async (student: Student) => {
 };
 
 const getAllStudentFromDB = async () => {
-  const result = await studentModel.find();
+  const result = await studentModel.find().populate('admissionSemester');
   return result;
 };
 
