@@ -7,18 +7,26 @@ const createStudentIntoDB = async (student: Student) => {
 };
 
 const getAllStudentFromDB = async (query: Record<string, unknown>) => {
+  console.log(query);
   let searchTerm = "";
   const studentSearchableField = ["name.firstName", "email"];
+
+  const queryObj = { ...query };
+  const excludingImportant = ["searchTerm"];
+  excludingImportant.forEach((key) => delete queryObj[key]);
+  console.log(queryObj);
+
   if (query?.searchTerm) {
     searchTerm = query?.searchTerm as string;
   }
-  const result = await studentModel
-    .find({
-      $or: studentSearchableField.map((field) => ({
-        [field]: { $regex: searchTerm, $options: "i" },
-      })),
-    })
-    .populate("admissionSemester");
+
+  const searchQuery = studentModel.find({
+    $or: studentSearchableField.map((field) => ({
+      [field]: { $regex: searchTerm, $options: "i" },
+    })),
+  });
+
+  const result = await searchQuery.find(queryObj).populate("admissionSemester");
   return result;
 };
 
