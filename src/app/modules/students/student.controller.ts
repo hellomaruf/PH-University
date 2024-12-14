@@ -25,7 +25,7 @@ const createStudent = catchAsync(async (req, res) => {
 });
 
 const getAllStudents = catchAsync(async (req, res) => {
-  const result = await studentServices.getAllStudentFromDB();
+  const result = await studentServices.getAllStudentFromDB(req.query);
   res.status(200).json({
     success: true,
     message: "All student find successfully",

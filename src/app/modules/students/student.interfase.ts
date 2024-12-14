@@ -21,7 +21,7 @@ export type LocalGuardian = {
 export type Student = {
   id: string;
   name: UserName;
-  user:Types.ObjectId
+  user?:Types.ObjectId
   gender: "male" | "female";
   email: string;
   contactNo: string;

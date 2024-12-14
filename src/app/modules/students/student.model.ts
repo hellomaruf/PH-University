@@ -30,7 +30,7 @@ const studentSchema = new Schema<Student>({
   name: studentName,
   user: {
     type: Schema.Types.ObjectId,
-    required: [true, "user id is required"],
+    // required: [true, "user id is required"],
     unique: true,
     ref: "User",
   },

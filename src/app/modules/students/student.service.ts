@@ -6,8 +6,19 @@ const createStudentIntoDB = async (student: Student) => {
   return result;
 };
 
-const getAllStudentFromDB = async () => {
-  const result = await studentModel.find().populate('admissionSemester');
+const getAllStudentFromDB = async (query: Record<string, unknown>) => {
+  let searchTerm = "";
+  const studentSearchableField = ["name.firstName", "email"];
+  if (query?.searchTerm) {
+    searchTerm = query?.searchTerm as string;
+  }
+  const result = await studentModel
+    .find({
+      $or: studentSearchableField.map((field) => ({
+        [field]: { $regex: searchTerm, $options: "i" },
+      })),
+    })
+    .populate("admissionSemester");
   return result;
 };
 
