@@ -1,8 +1,9 @@
 import mongoose, { mongo } from "mongoose";
-import { TErrorSourse } from "../interface/error";
+import { TErrorSourse, TGenericError } from "../interface/error";
 
 // handle mongoose validation error start ----------->
-const handleValidationError = (err: mongoose.Error.ValidationError) => {
+
+const handleValidationError  = (err: mongoose.Error.ValidationError) : TGenericError => {
   const statusCode = 400;
 
   const errorSourse: TErrorSourse = Object.values(err.errors).map(
