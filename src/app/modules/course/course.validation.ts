@@ -12,6 +12,7 @@ const CourseSchema = z.object({
     code: z.number(),
     credits: z.number(),
     preRequisitCourse: z.array(PreRequisitCourseSchema).optional(),
+    isDeleted: z.boolean().optional(),
   }),
 });
 

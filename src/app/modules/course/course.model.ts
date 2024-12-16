@@ -12,6 +12,8 @@ const CourseSchema = new Schema<TCourse>({
   code: { type: Number, required: true },
   credits: { type: Number, required: true },
   preRequisitCourse: [PreRequisitCourseSchema],
+  isDeleted: { type: Boolean, default: false },
+
 });
 
 // Create and export the model
