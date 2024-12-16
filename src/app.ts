@@ -6,6 +6,7 @@ import globalErrorHandler from "./app/middlewares/globalErrorHundler";
 import { createAcademicSemesterRoutes } from "./app/modules/academicSemester/academicSemester.route";
 import { AcademicFacultyRouter } from "./app/modules/academicFaculty/academicFaculty.router";
 import { AcademicDepartmentRouter } from "./app/modules/academicDepartment/academicDepartment.router";
+import { CourseRoutes } from "./app/modules/course/course.router";
 const app = express();
 
 // perser -------------->
@@ -18,6 +19,7 @@ app.use("/api/v1/users", UsersRouters);
 app.use("/api/v1/academy-semester", createAcademicSemesterRoutes);
 app.use("/api/v1/academy-faculty", AcademicFacultyRouter);
 app.use("/api/v1/academy-department", AcademicDepartmentRouter);
+app.use("/api/v1/courses", CourseRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello developer!");
