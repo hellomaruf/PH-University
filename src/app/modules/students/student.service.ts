@@ -1,3 +1,5 @@
+import QueryBuilder from "../../builder/queryBuilder";
+import { studentSearchableField } from "./student.constant";
 import { Student } from "./student.interfase";
 import { studentModel } from "./student.model";
 
@@ -8,25 +10,34 @@ const createStudentIntoDB = async (student: Student) => {
 
 const getAllStudentFromDB = async (query: Record<string, unknown>) => {
   console.log(query);
-  let searchTerm = "";
-  const studentSearchableField = ["name.firstName", "email"];
 
-  const queryObj = { ...query };
-  const excludingImportant = ["searchTerm"];
-  excludingImportant.forEach((key) => delete queryObj[key]);
-  console.log(queryObj);
+  // let searchTerm = "";
+  // const studentSearchableField = ["name.firstName", "email"];
 
-  if (query?.searchTerm) {
-    searchTerm = query?.searchTerm as string;
-  }
+  // const queryObj = { ...query };
+  // const excludingImportant = ["searchTerm"];
+  // excludingImportant.forEach((key) => delete queryObj[key]);
 
-  const searchQuery = studentModel.find({
-    $or: studentSearchableField.map((field) => ({
-      [field]: { $regex: searchTerm, $options: "i" },
-    })),
-  });
+  // if (query?.searchTerm) {
+  //   searchTerm = query?.searchTerm as string;
+  // }
 
-  const result = await searchQuery.find(queryObj).populate("admissionSemester");
+  // const searchQuery = studentModel.find({
+  //   $or: studentSearchableField.map((field) => ({
+  //     [field]: { $regex: searchTerm, $options: "i" },
+  //   })),
+  // });
+
+  // const result = await searchQuery.find(queryObj).populate("admissionSemester");
+  // return result;
+
+  const studentQuery = new QueryBuilder(studentModel.find(), query)
+    .search(studentSearchableField)
+    .filter()
+    .sort()
+    .paginate();
+
+  const result = await studentQuery.modelQuery;
   return result;
 };
 
