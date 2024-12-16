@@ -6,11 +6,13 @@ const PreRequisitCourseSchema = z.object({
 });
 
 const CourseSchema = z.object({
-  title: z.string(),
-  prefix: z.string(),
-  code: z.number(),
-  credits: z.number(),
-  preRequisitCourse: z.array(PreRequisitCourseSchema).optional(),
+  body: z.object({
+    title: z.string(),
+    prefix: z.string(),
+    code: z.number(),
+    credits: z.number(),
+    preRequisitCourse: z.array(PreRequisitCourseSchema).optional(),
+  }),
 });
 
 export const courseValidation = { PreRequisitCourseSchema, CourseSchema };
